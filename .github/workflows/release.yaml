@@ -37,6 +37,7 @@ jobs:
         run: |
           which gh
           gh release list "$GITHUB_REPOSITORY"
+          git tag
           pwd
           ls -la
           set
