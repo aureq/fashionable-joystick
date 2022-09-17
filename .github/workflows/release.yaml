@@ -36,6 +36,7 @@ jobs:
       - name: Show environment
         run: |
           which gh
+          gh release list "$GITHUB_REPOSITORY"
           pwd
           ls -la
           set
