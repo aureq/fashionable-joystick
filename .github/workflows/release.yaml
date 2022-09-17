@@ -37,6 +37,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          whick make
           which gh
           gh release list --repo "$GITHUB_REPOSITORY"
           git tag
