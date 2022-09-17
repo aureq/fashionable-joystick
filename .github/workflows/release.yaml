@@ -36,7 +36,7 @@ jobs:
       - name: Show environment
         run: |
           which gh
-          gh release list "$GITHUB_REPOSITORY"
+          gh release list --repo "$GITHUB_REPOSITORY"
           git tag
           pwd
           ls -la
