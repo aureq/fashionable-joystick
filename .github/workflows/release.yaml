@@ -35,4 +35,7 @@ jobs:
 
       - name: Show environment
         run: |
+          which gh
+          pwd
+          ls -la
           set
