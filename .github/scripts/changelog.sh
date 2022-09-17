@@ -43,3 +43,7 @@ if [ ! -z "$(echo $CURRENT_VERSION | sed  '/-\(alpha\|beta\|rc\)/!d')" ]; then
 fi
 
 gh release create "$CURRENT_VERSION" --notes-file "$RELEASE_CHANGELOG" $GH_OPTS
+
+sleep 2
+
+git fetch -a
