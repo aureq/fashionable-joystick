@@ -1,5 +1,22 @@
 # Change log
 
+## v0.0.3-alpha.2
+
+- 😱
+- ⚠ something v0.0.3-alpha.2
+
+## v0.0.3-alpha.1
+
+- 💜 dew we
+- ⚠ something v0.0.3-alpha.1
+- 🌞 sunshine
+
+## v0.0.2
+
+- ✨ new feature
+- 🤦‍♂️ bugs
+- 🤷‍♂️ mistakes
+
 ## v0.0.1-alpha1
 
 - fix bla blah
