@@ -23,6 +23,11 @@ fi
 CURRENT_VERSION="$1"
 PREVIOUS_VERSION="$(git for-each-ref --format="%(refname)" --sort=-creatordate --count=1 refs/tags | awk -F '/' '{print $3}')"
 
+if git rev-parse "$CURRENT_VERSION" >/dev/null 2>&1; then
+    echo "Release '$CURRENT_VERSION' already exists" >&2
+    exit 1
+fi
+
 if [ -z "$PREVIOUS_VERSION" ]; then
     echo "PREVIOUS_VERSION='$PREVIOUS_VERSION' is empty" >&2
     exit 1
@@ -44,7 +49,9 @@ trap "rm -f $RELEASE_CHANGELOG" EXIT
 
 echo -e "## Changes for cert-manager-webhook-ovh $CURRENT_VERSION\n" > "$RELEASE_CHANGELOG"
 
-cat CHANGELOG.md | sed -n "/## $CURRENT_VERSION/,/## $PREVIOUS_VERSION/p;" | sed 'N;$!P;$!D;$d' | awk 'NR>2' >> "$RELEASE_CHANGELOG"
+cat CHANGELOG.md | sed -n "/## $CURRENT_VERSION/,/## $PREVIOUS_VERSION/p;" | sed 'N;$!P;$!D;$d' | awk 'NR>2' | sed '/^$/d' >> "$RELEASE_CHANGELOG"
+echo -n "- Released on " >> "$RELEASE_CHANGELOG"
+TZ=UTC date >> "$RELEASE_CHANGELOG"
 
 GH_OPTS=""
 if [ ! -z "$(echo $CURRENT_VERSION | sed  '/-\(alpha\|beta\|rc\)/!d')" ]; then
