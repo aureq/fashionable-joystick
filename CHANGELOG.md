@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.3-alpha.3
+
+- Yes, something happened 🚀
+
 ## v0.0.3-alpha.2
 
 - 😱
