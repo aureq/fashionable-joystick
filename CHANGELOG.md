@@ -3,10 +3,7 @@
 ## v0.0.3-alpha.5
 
 - Yes, something happened 🚀
-
-## v0.0.3-alpha.4
-
-- missed that release so shouldn't appear
+- (v0.0.3-alpha.4) missed that release so shouldn't appear
 
 ## v0.0.3-alpha.3
 
