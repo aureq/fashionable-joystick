@@ -39,11 +39,3 @@ jobs:
           pwd
           ls -la
           set
-
-      - name: Helm Chart Releaser
-        uses: helm/chart-releaser-action@v1.4.1
-        env:
-          CR_SKIP_EXISTING: "false"
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        with:
-          charts_dir: charts
