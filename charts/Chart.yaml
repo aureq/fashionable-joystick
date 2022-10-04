@@ -14,6 +14,7 @@ keywords:
 home: https://github.com/aureq/cert-manager-webhook-ovh
 sources:
   - https://github.com/aureq/cert-manager-webhook-ovh
+type: application
 maintainers:
   - name: Aurélien Requiem
     url: https://github.com/aureq
