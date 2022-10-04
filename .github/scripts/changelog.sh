@@ -53,12 +53,24 @@ cat CHANGELOG.md | sed -n "/## $CURRENT_VERSION/,/## $PREVIOUS_VERSION/p;" | sed
 echo -n "- Released on " >> "$RELEASE_CHANGELOG"
 TZ=UTC date >> "$RELEASE_CHANGELOG"
 
+# we want to detect is a release name wasn't released but is now pulled into
+# the release notes. If so, we should stop and request that unpublished release
+# to be merge with the one we want to actually publish
+cat "$RELEASE_CHANGELOG" | grep '^## ' | sed 's/^## //g;' | sed '1d' | while read R; do
+    if [ -z "$(git tag -l | grep "$R")" ]; then
+        echo "The release '$R' doesn't seem to have a tag and is showing up in CHANGELOG.md."
+        echo "Most likely this release wasn't published and the changelog entries should be"
+        echo "merged into '$CURRENT_VERSION'"
+        exit 1
+    fi
+done
+
 GH_OPTS=""
 if [ ! -z "$(echo $CURRENT_VERSION | sed  '/-\(alpha\|beta\|rc\)/!d')" ]; then
     GH_OPTS="--prerelease"
 fi
 
-gh release create "$CURRENT_VERSION" --notes-file "$RELEASE_CHANGELOG" $GH_OPTS
+echo gh release create "$CURRENT_VERSION" --notes-file "$RELEASE_CHANGELOG" $GH_OPTS
 
 sleep 2
 
