@@ -63,8 +63,9 @@ jobs:
           set
           ls -la
           find ./
-          cat  .git/config
           git status
+          test -d packages || mkdir packages
+          gh release upload "$GITHUB_REF_NAME" tmp/packages/*
           mv tmp/packages/* packages/
           mv tmp/Chart.yaml ./
           helm repo index --url "https://$GITHUB_ACTOR.github.io/$(echo "$GITHUB_REPOSITORY" | cut --delimiter / --fields=2)/packages" .
