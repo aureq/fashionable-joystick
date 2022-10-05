@@ -2,6 +2,8 @@
 
 set -eu
 
+CHART_DIR="charts/cert-manager-webhook-ovh"
+
 COMMITS_TO_PUSH="$(git log --oneline origin..HEAD  | awk 'END { print NR }')"
 
 if [ "$COMMITS_TO_PUSH" -ne "0" ]; then
@@ -20,11 +22,12 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-if [ -d "charts" ]; then
-    for D in charts/*; do
-        echo -n "Linting Chart $D: "
-        helm lint "$D" >/dev/null || exit 1
-    done
+if [ -d "$CHART_DIR" ]; then
+    echo -n "Linting Chart $CHART_DIR: "
+    helm lint "$CHART_DIR" >/dev/null || exit 1
+else
+    echo "Missing '$CHART_DIR'"
+    exit 1
 fi
 
 CURRENT_VERSION="$1"
