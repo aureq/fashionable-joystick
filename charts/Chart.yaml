@@ -1,5 +1,5 @@
 apiVersion: v1
-appVersion: v0.4.0-alpha0
+appVersion: v0.4.0-alpha.0
 deprecated: false
 description: OVH DNS cert-manager ACME webhook
 home: https://github.com/aureq/cert-manager-webhook-ovh
@@ -9,7 +9,7 @@ keywords:
   - ovh
   - dns
   - lets-encrypt
-  - "Let's Encrypt"
+  - Let's Encrypt
   - tls
   - certificate
   - ssl
@@ -19,5 +19,4 @@ maintainers:
 name: cert-manager-webhook-ovh
 sources:
   - https://github.com/aureq/cert-manager-webhook-ovh
-type: application
-version: v0.4.0-alpha.0
+version: 0.4.0-alpha.0
