@@ -33,6 +33,17 @@ fi
 CURRENT_VERSION="$1"
 PREVIOUS_VERSION="$(git for-each-ref --format="%(refname)" --sort=-creatordate --count=1 refs/tags | awk -F '/' '{print $3}')"
 
+CHART_VERSION="$(cat "$CHART_DIR/Chart.yaml" | sed '/^version:/!d; s/^version: \(.*\)/\1/g; s/"//g;')"
+CHART_APPVERSION="$(cat "$CHART_DIR/Chart.yaml" | sed '/^appVersion:/!d; s/^appVersion: \(.*\)/\1/g; s/"//g;')"
+
+if [ "$CURRENT_VERSION" != "$CHART_VERSION" -o "$CURRENT_VERSION" != "$CHART_APPVERSION" ]; then
+    echo "Version mismatch. The following values should match."
+    echo "$CHART_DIR/Chart.yaml: appVersion: $CHART_APPVERSION"
+    echo "$CHART_DIR/Chart.yaml: version: $CHART_VERSION"
+    echo "Command: $CURRENT_VERSION"
+    exit 1
+fi
+
 if git rev-parse "$CURRENT_VERSION" >/dev/null 2>&1; then
     echo "Release '$CURRENT_VERSION' already exists" >&2
     exit 1
