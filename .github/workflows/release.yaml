@@ -27,8 +27,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p tmp/packages
-          helm package --destination tmp/packages/ charts/
-          cp charts/Chart.yaml tmp/
+          helm package --destination tmp/packages/ charts/cert-manager-webhook-ovh/
+          cp charts/cert-manager-webhook-ovh/Chart.yaml tmp/
 
       - name: tag-upload-artifacts
         uses: actions/upload-artifact@v3
