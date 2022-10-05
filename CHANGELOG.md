@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.5.0-alpha.1
+## v0.5.0-alpha.2
 
 - getting there at last !
 - Yes, something happened 🚀
