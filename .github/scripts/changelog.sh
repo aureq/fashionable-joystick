@@ -5,7 +5,7 @@ set -eu
 COMMITS_TO_PUSH="$(git log --oneline origin..HEAD  | awk 'END { print NR }')"
 
 if [ "$COMMITS_TO_PUSH" -ne "0" ]; then
-    echo "COMMITS_TO_PUSH='$COMMITS_TO_PUSH' is not 0"
+    echo "All local commits should be pushed. (COMMITS_TO_PUSH='$COMMITS_TO_PUSH')"
     exit 1
 fi
 
@@ -16,7 +16,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 if [ -z "$1" ]; then
-    echo "CURRENT_VERSION='$CURRENT_VERSION' is empty" >&2
+    echo "Unable to determine current version. (CURRENT_VERSION='$CURRENT_VERSION')" >&2
     exit 1
 fi
 
@@ -36,7 +36,7 @@ if git rev-parse "$CURRENT_VERSION" >/dev/null 2>&1; then
 fi
 
 if [ -z "$PREVIOUS_VERSION" ]; then
-    echo "PREVIOUS_VERSION='$PREVIOUS_VERSION' is empty" >&2
+    echo "Unable to determine previous version. (PREVIOUS_VERSION='$PREVIOUS_VERSION')" >&2
     exit 1
 fi
 
