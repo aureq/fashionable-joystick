@@ -80,8 +80,7 @@ TZ=UTC date >> "$RELEASE_CHANGELOG"
 cat "$RELEASE_CHANGELOG" | grep '^## ' | sed 's/^## //g;' | sed '1d' | while read R; do
     if [ -z "$(git tag -l | grep "$R")" ]; then
         echo "The release '$R' doesn't seem to have a tag and is showing up in CHANGELOG.md."
-        echo "Most likely this release wasn't published and the changelog entries should be"
-        echo "merged into '$CURRENT_VERSION'"
+        echo "Most likely this release wasn't published and the changelog entries should be merged into '$CURRENT_VERSION'"
         exit 1
     fi
 done
