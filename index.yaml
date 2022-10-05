@@ -3,7 +3,7 @@ entries:
   cert-manager-webhook-ovh:
   - apiVersion: v1
     appVersion: v0.4.0-alpha.0
-    created: "2022-10-05T07:28:26.422177685Z"
+    created: "2022-10-05T07:32:59.874263935Z"
     description: OVH DNS cert-manager ACME webhook
     digest: 6cd191359d16e279cb1ed8dec484888974eac62be7940260fe9e1c524a3d4066
     home: https://github.com/aureq/cert-manager-webhook-ovh
@@ -26,4 +26,29 @@ entries:
     urls:
     - https://aureq.github.io/fashionable-joystick/packages/cert-manager-webhook-ovh-0.5.0-build.1.tgz
     version: 0.5.0-build.1
-generated: "2022-10-05T07:28:26.42150258Z"
+  - apiVersion: v1
+    appVersion: v0.4.0-alpha.0
+    created: "2022-10-05T07:32:59.875026143Z"
+    description: OVH DNS cert-manager ACME webhook
+    digest: 0e13730b07c9f67f3fd736c04fc90d0c18e4274156bd78f4c396964bfdc78f1e
+    home: https://github.com/aureq/cert-manager-webhook-ovh
+    icon: https://raw.githubusercontent.com/aureq/cert-manager-webhook-ovh/main/assets/images/cert-manager-webhook-ovh.svg
+    keywords:
+    - cert-manager
+    - ovh
+    - dns
+    - lets-encrypt
+    - Let's Encrypt
+    - tls
+    - certificate
+    - ssl
+    maintainers:
+    - name: Aurélien Requiem
+      url: https://github.com/aureq
+    name: cert-manager-webhook-ovh
+    sources:
+    - https://github.com/aureq/cert-manager-webhook-ovh
+    urls:
+    - https://aureq.github.io/fashionable-joystick/packages/cert-manager-webhook-ovh-v0.5.0-alpha.1.tgz
+    version: v0.5.0-alpha.1
+generated: "2022-10-05T07:32:59.873431326Z"
