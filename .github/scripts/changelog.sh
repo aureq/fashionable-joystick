@@ -20,6 +20,13 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+if [ -d "charts" ]; then
+    for D in charts/*; do
+        echo -n "Linting Chart $D: "
+        helm lint "$D" >/dev/null || exit 1
+    done
+fi
+
 CURRENT_VERSION="$1"
 PREVIOUS_VERSION="$(git for-each-ref --format="%(refname)" --sort=-creatordate --count=1 refs/tags | awk -F '/' '{print $3}')"
 
